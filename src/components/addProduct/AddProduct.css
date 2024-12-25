@@ -1,0 +1,13 @@
+.categorySelect {
+  text-align: start;
+  z-index: 100;
+}
+.registerForm1 {
+  width: 400px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+}
+.registerForm1 .MuiFormControl-root {
+  margin: 10px 0;
+}

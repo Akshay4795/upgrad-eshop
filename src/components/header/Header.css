@@ -1,0 +1,36 @@
+.header {
+  background-color: #3f51b5 !important;
+  height: 60px;
+  padding: 9px;
+  padding-right: 1.5%;
+  padding-left: 1.5%;
+}
+
+.header-link {
+  color: white !important;
+  margin: 1% !important;
+  margin-right: 8% !important;
+  text-decoration: underline !important;
+}
+
+.logout-button {
+  background-color: #f50057 !important;
+  height: 38px;
+  margin-left: 3%;
+}
+.app-name {
+  font-size: 110%;
+  color: white;
+  font-weight: 600;
+  vertical-align: top;
+  margin-left: 2%;
+}
+.header-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.header-logo {
+  display: flex;
+  padding-top: 0.5%;
+  justify-content: flex-start;
+}

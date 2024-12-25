@@ -1,0 +1,30 @@
+.registerForm1 {
+  width: 400px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+}
+.registerForm1 .MuiFormControl-root {
+  margin: 10px 0;
+}
+.finalStep {
+  width: 60%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  text-align: start;
+}
+.finalStep > div {
+  padding: 3%;
+}
+.finalStep > .addressDetails > p {
+  margin: 1.5%;
+}
+.headingText {
+  font-size: xx-large;
+  margin-bottom: 3%;
+}
+.Mui-completed {
+  color: #3f51b5;
+}
