@@ -14,7 +14,7 @@ export default function AddProduct() {
     price: 0,
     description: "",
     manufacturer: "",
-    availableItems: "",
+    availableItems: 0,
     imageUrl: "",
   });
   const [notification, setNotification] = useState({
@@ -44,12 +44,24 @@ export default function AddProduct() {
 
   const addProduct = async () => {
     if (
+      isNaN(data.price) ||
+      isNaN(data.availableItems) ||
+      Number(data.price) < 0 ||
+      Number(data.availableItems) < 0
+    ) {
+      setNotification({
+        open: true,
+        type: "error",
+        message: "Check the Price and Available Items field",
+      });
+      return;
+    } else if (
       data.name.trim().length === 0 ||
       data.category.trim().length === 0 ||
       Number(data.price) === 0 ||
       data.description.trim().length === 0 ||
       data.manufacturer.trim().length === 0 ||
-      data.availableItems.trim().length === 0 ||
+      Number(data.availableItems) === 0 ||
       data.imageUrl.trim().length === 0
     ) {
       setNotification({
@@ -150,6 +162,7 @@ export default function AddProduct() {
         />
         <TextField
           name="availableItems"
+          type="number"
           variant="outlined"
           label="availableItems"
           onChange={(e) => {

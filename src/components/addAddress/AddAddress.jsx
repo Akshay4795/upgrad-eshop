@@ -15,8 +15,8 @@ import {
 import { jwtDecode } from "jwt-decode";
 import { ToastNotification } from "../../common/services";
 import "./AddAddress.css";
-import { LineWeight } from "@mui/icons-material";
 const steps = ["Items", "Select Address", "Confirm order"];
+
 export default function AddAddress() {
   const { id, qty } = useParams();
   const navigate = useNavigate();
@@ -159,9 +159,9 @@ export default function AddAddress() {
       });
       return;
     }
+    getProductDetails();
     setActiveKey(2);
     setFinalStep(true);
-    getProductDetails();
   };
 
   const getProductDetails = async () => {
@@ -180,7 +180,7 @@ export default function AddAddress() {
   };
 
   const midStep = () => {
-    navigate("/addaddress/" + id + "/2");
+    navigate("/addaddress/" + id + "/1");
     setActiveKey(1);
     setFinalStep(false);
   };
@@ -194,8 +194,17 @@ export default function AddAddress() {
   });
   return (
     <div>
-      <Box sx={{ width: "80%", margin: "auto", marginY: "20px" }}>
-        <Stepper activeStep={activeKey}>
+      <Box
+        sx={{
+          width: "80%",
+          margin: "auto",
+          marginY: "20px",
+          bgcolor: "#fff",
+          padding: ".5%",
+          height: "30px",
+        }}
+      >
+        <Stepper activeStep={activeKey} sx={{ height: "100%" }}>
           {steps.map((label, index) => (
             <Step
               key={label}
@@ -245,7 +254,10 @@ export default function AddAddress() {
             </TextField>
           </div>
           <p style={{ textAlign: "center" }}>-OR-</p>
-          <form className="registerForm1" style={{ marginTop: "20px" }}>
+          <form
+            className="registerForm1"
+            style={{ marginTop: "0px", marginBottom: "0px" }}
+          >
             <div style={{ fontSize: "x-large", textAlign: "center" }}>
               Add Address
             </div>

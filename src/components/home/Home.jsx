@@ -22,7 +22,7 @@ let deleteProductId = "";
 let deleteProductName = "";
 export default function Home() {
   const [loggdata, setloggdata] = useState(logData());
-  // const [products1, setProducts1] = useState([]);
+  const [products1, setProducts1] = useState([]);
   const [products, setProducts] = useState([]);
   const [categeries, setCategories] = useState(["ALL"]);
   const [notification, setNotification] = useState({
@@ -59,7 +59,7 @@ export default function Home() {
       getProducts();
     } else if (newAlignment != null) {
       //products1
-      let a = [...products];
+      let a = [...products1];
       a = a.filter((e, i) => e.category === newAlignment);
       setProducts(a);
     }
@@ -68,7 +68,7 @@ export default function Home() {
   const getProducts = async () => {
     await get_details("/products")
       .then((res) => {
-        //  setProducts1(res.data);
+        setProducts1(res.data);
         setProducts(res.data);
       })
       .catch((e) => {
@@ -80,6 +80,7 @@ export default function Home() {
       });
   };
   const handleSort = (e) => {
+    console.log(e);
     let a = [...products];
     if (e.target.value === "asc") {
       a.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
@@ -92,6 +93,9 @@ export default function Home() {
     if (e.target.value === "new") {
       a.reverse();
       setProducts(a);
+    }
+    if (e.target.value === "def") {
+      handleChange(e, alignment);
     }
   };
   const getCategories = async () => {
@@ -149,17 +153,21 @@ export default function Home() {
         navigate(location.pathname, { replace: true, state: {} });
       }
       getCategories();
+      getProducts();
     }
   }, []);
 
   useEffect(() => {
-    getProducts();
-    console.log("products", products);
-    let a = products;
-    console.log(a);
+    let a = [];
     if (location.pathname.split("/").length > 2) {
+      let a = products1;
       a = a.filter((e) => {
-        console.log(e, location.pathname.split("/"));
+        console.log(
+          e.name,
+          e.name
+            .toLowerCase()
+            .includes(location.pathname.split("/")[2].toLowerCase())
+        );
         return e.name
           .toLowerCase()
           .includes(location.pathname.split("/")[2].toLowerCase());
@@ -204,7 +212,6 @@ export default function Home() {
           id="outlined-select-currency"
           size="small"
           select
-          label="Select"
           placeholder="Select..."
           onChange={(e) => {
             handleSort(e);

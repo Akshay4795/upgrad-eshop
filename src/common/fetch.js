@@ -1,7 +1,7 @@
 import axios from "axios";
 // Add the Token value after sign api call
 let token =
-  "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJha3NoYXlwYXRpbGJhYWFAZ21haWwuY29tIiwiaWF0IjoxNzM1MTM3NjA5LCJleHAiOjE3MzUxNDYwMDl9.gF8BG8WpYwMS8rVhQTOVIBqyGAqu2a0fIIe13k47Eyl1GFkdMVoOBwVoXh71YXLmVwNN0DdZm4oQMLDuKmKLwg";
+  "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBkZW1vLmNvbSIsImlhdCI6MTczNTE0NTQyNywiZXhwIjoxNzM1MTUzODI3fQ.1SCXMlmdat5s5ynIUTBK37726aLugnHE3MWOJIF3aQpDFoYlecfgSbo4h4b7qO_KZA9jei3RKFLdROV8egzX6Q";
 
 // api service to call the API endpoints
 const apiservice = axios.create({

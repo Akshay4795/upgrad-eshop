@@ -13,7 +13,7 @@ export default function EditProduct() {
     price: 0,
     description: "",
     manufacturer: "",
-    availableItems: "",
+    availableItems: 0,
     imageUrl: "",
   });
   const [notification, setNotification] = useState({
@@ -27,12 +27,26 @@ export default function EditProduct() {
   };
 
   const editProduct = () => {
+    console.log(isNaN(data.price) || isNaN(data.availableItems));
     if (
+      isNaN(data.price) ||
+      isNaN(data.availableItems) ||
+      Number(data.price) < 0 ||
+      Number(data.availableItems) < 0
+    ) {
+      setNotification({
+        open: true,
+        type: "error",
+        message: "Check the Price and Available Items field",
+      });
+      return;
+    } else if (
       data.name.trim().length === 0 ||
       data.category.trim().length === 0 ||
       Number(data.price) === 0 ||
       data.description.trim().length === 0 ||
       data.manufacturer.trim().length === 0 ||
+      Number(data.availableItems) === 0 ||
       data.imageUrl.trim().length === 0
     ) {
       setNotification({
