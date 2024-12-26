@@ -35,6 +35,7 @@ export default function Login() {
         let roles = res.data.roles[0];
         localStorage.setItem("token", "");
         localStorage.setItem("role", roles);
+        localStorage.setItem("userId", res.data.id);
 
         setNotification({
           open: true,

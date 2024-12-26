@@ -14,14 +14,15 @@ export default function AllRoute() {
   const location = useLocation();
   //To check if the user is already logged in navigate to Products page
   useEffect(() => {
-    if (logData() && location.pathname.split("/").length == 1) {
+    if (logData() && location.pathname == "/") {
       navigate("/products");
+    } else if (!logData() && location.pathname == "/") {
+      navigate("/login");
     }
   });
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/products" element={<Home />} />

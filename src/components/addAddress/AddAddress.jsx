@@ -121,20 +121,22 @@ export default function AddAddress() {
     await get_details("/addresses")
       .then((res) => {
         let a = res.data;
-        a = a.map((e) => {
-          let obj = {
-            state: e.state,
-            city: e.city,
-            street: e.street,
-            landmark: e.landmark,
-            zipcode: e.zipcode,
-            contactNumber: e.contactNumber,
-            user: e.user,
-            id: e.id,
-            name: e.name,
-          };
-          return obj;
-        });
+        a = a
+          .filter((e) => e.user == localStorage.getItem("userId"))
+          .map((e) => {
+            let obj = {
+              state: e.state,
+              city: e.city,
+              street: e.street,
+              landmark: e.landmark,
+              zipcode: e.zipcode,
+              contactNumber: e.contactNumber,
+              user: e.user,
+              id: e.id,
+              name: e.name,
+            };
+            return obj;
+          });
         setAddressList(a);
       })
       .catch((e) => {
